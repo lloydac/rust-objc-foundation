@@ -14,6 +14,7 @@ pub use self::array::{
 pub use self::data::{INSData, INSMutableData, NSData, NSMutableData};
 pub use self::dictionary::{INSDictionary, NSDictionary};
 pub use self::enumerator::{INSFastEnumeration, NSEnumerator, NSFastEnumerator};
+pub use self::error::{NSError};
 pub use self::object::{INSObject, NSObject};
 pub use self::string::{INSCopying, INSMutableCopying, INSString, NSString};
 pub use self::value::{INSValue, NSValue};
@@ -28,6 +29,7 @@ mod array;
 mod data;
 mod dictionary;
 mod enumerator;
+mod error;
 mod object;
 mod string;
 mod value;
