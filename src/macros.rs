@@ -1,4 +1,5 @@
 #[macro_export]
+#[macro_use(lazy_static)]
 macro_rules! object_struct {
     ($name:ident) => (
         pub struct $name {
@@ -9,11 +10,17 @@ macro_rules! object_struct {
 
         impl $crate::INSObject for $name {
             fn class() -> &'static ::objc::runtime::Class {
-                let name = stringify!($name);
-                match ::objc::runtime::Class::get(name) {
-                    Some(cls) => cls,
-                    None => panic!("Class {} not found", name),
+                lazy_static! {
+                    static ref CLASS: &'static ::objc::runtime::Class = {
+                        let name = stringify!($name);
+                        match ::objc::runtime::Class::get(name) {
+                            Some(cls) => cls,
+                            None => panic!("Class {} not found", name),
+                        }
+                    };
                 }
+
+                *CLASS
             }
         }
 

@@ -6,6 +6,9 @@ extern crate objc;
 extern crate objc_id;
 extern crate block;
 
+#[macro_use]
+extern crate lazy_static;
+
 pub use self::array::{
     INSArray, INSMutableArray,
     NSArray, NSComparisonResult, NSMutableArray, NSRange,
